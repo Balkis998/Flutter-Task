@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "611961629752",
+    "project_id": "task-balkis",
+    "storage_bucket": "task-balkis.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611961629752:android:4ad5ec3468b165b7424acd",
+        "android_client_info": {
+          "package_name": "com.example.task_balkis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611961629752-nq4hf58jskbq4osi23o7mjjr61avt5q3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWr3yl_dOSMsoFEzN-1zAdfd-tQFwaed4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "611961629752-nq4hf58jskbq4osi23o7mjjr61avt5q3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
