@@ -1,67 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:task_balkis/screen2/post_model.dart';
+import 'package:task_balkis/models/post-provider.dart';
+import 'package:provider/provider.dart';
+import 'package:task_balkis/widgets/user_details_widget.dart';
 
-class PostDetailsScreen extends StatefulWidget {
+class PostDetailsScreen extends StatelessWidget {
   static const String id = 'post_details_screen';
-
-  @override
-  _PostDetailsScreenState createState() => _PostDetailsScreenState();
-}
-
-class _PostDetailsScreenState extends State<PostDetailsScreen>
-    with SingleTickerProviderStateMixin {
-  final Post post;
-  MaterialColor _color;
-
-  _PostDetailsScreenState({@required this.post});
   @override
   Widget build(BuildContext context) {
+    final userData = Provider.of<PostProvider>(context, listen: false);
+    userData.userProfileFetching(id);
     return Scaffold(
-      backgroundColor: _color,
       appBar: AppBar(
-        title: Text(post.title),
+        title: Text('Profile Details'),
       ),
-      body: SingleChildScrollView(
-          child: Padding(
-        padding: EdgeInsets.all(12.0),
-        child: Card(
-          child: Column(
-            children: [
-              ListTile(
-                title: Text('Title'),
-                subtitle: Text(post.title),
-              ),
-              ListTile(
-                title: Text('ID'),
-                subtitle: Text('${post.id}'),
-              ),
-              ListTile(
-                title: Text('Body'),
-                subtitle: Text(post.body),
-              ),
-              ListTile(
-                title: Text('User ID'),
-                subtitle: Text('${post.userId}'),
-              ),
-              ElevatedButton(
-                child: Text(
-                  'Mark as read',
-                  style: TextStyle(color: Colors.white),
-                ),
-                onPressed: () {
-                  setState(() {
-                    _color = Colors.blueGrey;
-                  });
-                },
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.black),
-                    textStyle:
-                        MaterialStateProperty.all(TextStyle(fontSize: 20))),
-              ),
-            ],
-          ),
-        ),
-      )),
+      body: Container(
+        child: ListView.builder(
+            itemCount: 1,
+            itemBuilder: (cxt, index) {
+              return UserDetails(
+                id: userData.userInfo.id,
+                firstName: userData.userInfo.firstName,
+                lastName: userData.userInfo.lastName,
+                dateOfBirth: userData.userInfo.dateOfBirth,
+                registerDate: userData.userInfo.registerDate,
+                title: userData.userInfo.title,
+                pictureUrl: userData.userInfo.pictureUrl,
+                gender: userData.userInfo.gender,
+                email: userData.userInfo.email,
+                phone: userData.userInfo.phone,
+                location: userData.userInfo.location,
+              );
+            }),
+      ),
     );
   }
 }
